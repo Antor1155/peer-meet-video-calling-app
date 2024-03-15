@@ -8,6 +8,15 @@ let client;
 let channel;
 
 
+// getting url location 
+let queryString = window.location.search
+let urlParams = new URLSearchParams(queryString)
+let roomId = urlParams.get("room")
+
+if(!roomId){
+    window.location = "lobby.html"
+}
+
 // this part if for webRtc 
 let localStream;
 let remoteStream;
@@ -36,7 +45,7 @@ let init = async () => {
     await client.login({ uid, token })
 
     //index.html?room=234234
-    channel = client.createChannel("main")
+    channel = client.createChannel(roomId)
     await channel.join()
 
     // when a user joins the channel
