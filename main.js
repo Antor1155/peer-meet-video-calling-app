@@ -1,4 +1,5 @@
 // This part is for agora sdk 
+// let APP_ID = process.env.REACT_APP_AGORA_APP_ID
 let APP_ID = "c725ec6c683640dc8c2c2d87a383e599"
 
 let token = null
@@ -30,11 +31,20 @@ const servers = {
     ]
 }
 
+let constraints = {
+    video:{
+        width : {min:640, ideal: 1080, max: 1920},
+        height: {min: 480, ideal: 720, max: 1080}
+    },
+    audio: true
+ }
+
+
 let init = async () => {
 
     // ***********************
     // this part is for getting video
-    localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    localStream = await navigator.mediaDevices.getUserMedia(constraints)
 
     document.getElementById("user-1").srcObject = localStream
 

@@ -29,7 +29,7 @@ body{
     padding: 20px;
 }
 
-input{
+input, .form-btn{
     box-sizing: border-box;
     color: #fff;
     width: 100%;
@@ -42,6 +42,83 @@ input{
     margin-top: 32px;
 }
 
-input[type="submit"]{
+.form-btn{
     background-color: #845695;
 }
+
+.form-btn:hover{
+    background-color: #ba7bd1;
+}
+
+button.form-btn{
+    background-color: #56955d;
+    margin-top: 0;
+}
+
+button.form-btn:hover{
+    background-color: #82d18b;
+}
+
+
+#create-room{
+    
+    box-sizing: border-box;
+    width: 90%;
+    height: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    background-color: #363739;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: none;
+    flex-direction: column;
+
+    align-items: center;
+    /* justify-content: center; */
+    padding: 10px;
+    padding-top: 5%;
+}
+
+p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.info{
+    display: flex;
+    gap: 1rem;
+}
+
+.info p{
+    font-size: 18px;
+    color: antiquewhite;
+}
+
+#note{
+    font-size: 1rem;
+    
+}
+
+.copy-btn{
+    text-decoration: underline;
+}
+
+#status{
+    font-size: 20px;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    /* background-color: #56955d; */
+    visibility: hidden;
+}
+
+#start-meeting{
+    background-color: #82d18b;
+    padding: 10px 50px;
+    border-radius: 10px;
+}
+
+

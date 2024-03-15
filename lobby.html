@@ -19,12 +19,35 @@
                 <form id="join-form">
                     <input type="text" name="invite_link" required placeholder="roomId">
 
-                    <input type="submit" value="Join Room" />
+                    <input class="form-btn" type="submit" value="Join Room" />
+
+                    <p style="text-align: center;">OR</p>
+
+                    <button type="button" class="form-btn" onclick="handleCreateRoom()">Create Room</button>
                 </form>
             </div>
         </div>
 
     </main>
+
+    <div id="create-room">
+        <p>Copy the room ID <span style="color:yellow">OR</span> the link directly and share to start the meeting</p>
+
+        <p id="note">Click on the underlined text to copy !</p>
+
+        <div class="info">
+                <p>Room ID: <button id="room-id" class="copy-btn"></button></p>
+        </div>
+
+        <div class="info">
+            <p>Room URL: <button id="room-link" class="copy-btn"></button></p>
+        </div>
+
+        <p id="status">&#129299; Copied</p>
+
+        <button id="start-meeting">Start Meeting</button>
+
+    </div>
 
 </body>
 
@@ -37,6 +60,41 @@
 
         window.location = `index.html?room=${inviteCode}`
     })
+
+    function handleCreateRoom() {
+        const roomId = generateRoomId()
+        document.getElementById('create-room').style.display = "flex"
+
+        document.getElementById("room-id").innerHTML = roomId
+        document.getElementById("room-link").innerHTML = `${window.location.origin}/index.html?room=${roomId}`
+
+        document.getElementById("room-id").addEventListener("click", ()=>{
+            navigator.clipboard.writeText(roomId)
+            document.getElementById("status").style.visibility = "visible"
+        })
+
+        document.getElementById("room-link").addEventListener("click", ()=>{
+            navigator.clipboard.writeText(`${window.location.origin}/index.html?room=${roomId}`)
+            document.getElementById("status").style.visibility = "visible"
+        })
+
+
+        document.getElementById("start-meeting").addEventListener("click",()=>{
+            window.location = `index.html?room=${roomId}`
+        })
+
+    }
+
+
+
+    function generateRoomId() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let roomId = '';
+        for (let i = 0; i < 12; i++) {
+            roomId += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return roomId;
+    }
 </script>
 
 </html>
