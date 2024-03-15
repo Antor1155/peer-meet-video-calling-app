@@ -1,30 +1,67 @@
-#videos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2em;
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
 }
 
-.video-player{
+#videos {
+    display: grid;
+    /* grid-template-columns: 1fr; */
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.video-player {
     background-color: black;
     width: 100%;
-    height: 300px;
+    height: 100%;
+
+    max-height: 100vh;
+
+    object-fit: cover;
 }
 
-#user-2{
+
+#user-2 {
     display: none;
 }
 
+.smallFrame {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    height: 170px;
+    width: 300px;
+    border-radius: 5px;
+    border: 2px solid #b366f9;
 
-#controls{
+    box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, .77);
+    --webkit-box-shadow: 3px 3px 15px -1px rgba(0, 0, 0, .77);
+
+    z-index: 99;
+
+}
+
+
+#controls {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 1em;
+
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
-.control-container{
+.control-container {
     background-color: rgba(179, 102, 249, .9);
     padding: 20px;
     border-radius: 50%;
@@ -35,11 +72,19 @@
     cursor: pointer;
 }
 
-.control-container img{
+.control-container img {
     height: 30px;
     width: 30px;
 }
 
-#leave-btn{
+#leave-btn {
     background-color: rgb(255, 80, 80);
+}
+
+@media screen and (max-width:600px) {
+    .smallFrame {
+        height: 80px;
+        width: 120px;
+    }
+
 }

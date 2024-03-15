@@ -68,6 +68,7 @@ let handleUserJoined = async (memberId) => {
 
 let handleUserLeft = () =>{
     document.getElementById("user-2").style.display = "none"
+    document.getElementById("user-1").classList.remove("smallFrame")
 }
 
 
@@ -99,6 +100,8 @@ let createPeerConnection = async (memberId) => {
 
     document.getElementById("user-2").srcObject = remoteStream
     document.getElementById("user-2").style.display = "block"
+
+    document.getElementById("user-1").classList.add("smallFrame")
 
 
     localStream.getTracks().forEach((track) => {
@@ -180,7 +183,7 @@ let toggleCamera = async () => {
 
     if(videoTrack.enabled){
         videoTrack.enabled = false
-        document.getElementById("camera-btn").style.backgroundColor = 'rgb(255, 80, 80)'
+        document.getElementById("camera-btn").style.backgroundColor = 'rgb(255, 80, 80, .5)'
     
     }else{
         videoTrack.enabled = true
@@ -194,7 +197,7 @@ let toggleAudio = async () => {
 
     if(audioTrack.enabled){
         audioTrack.enabled = false
-        document.getElementById("mic-btn").style.backgroundColor = 'rgb(255, 80, 80)'
+        document.getElementById("mic-btn").style.backgroundColor = 'rgba(255, 80, 80, .5)'
     
     }else{
         audioTrack.enabled = true
